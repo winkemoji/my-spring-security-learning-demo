@@ -1,0 +1,32 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+      >
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+登陆账号:<span sec:authentication="name"></span><br>
+登陆账号:<span sec:authentication="principal.username"></span><br>
+凭证:<span sec:authentication="credentials"></span><br>
+权限和角色:<span sec:authentication="authorities"></span><br>
+客户端地址:<span sec:authentication="details.remoteAddress"></span><br>
+SessionId:<span sec:authentication="details.sessionId"></span><br>
+
+通过权限判断
+<button sec:authorize="hasAuthority('/insert')">add</button>
+<button sec:authorize="hasAuthority('/delete')">delete</button>
+<button sec:authorize="hasAuthority('/update')">update</button>
+<button sec:authorize="hasAuthority('/select')">select</button>
+<br>
+通过角色判断
+<button sec:authorize="hasRole('ADMIN')">add</button>
+<button sec:authorize="hasRole('ADMIN')">delete</button>
+<button sec:authorize="hasRole('ADMIN')">update</button>
+<button sec:authorize="hasRole('ADMIN')">select</button>
+</body>
+</html>
